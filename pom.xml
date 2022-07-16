@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>ca.bazlur</groupId>
+  <artifactId>wildfly-demo</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <name>wildfly-demo</name>
+  <packaging>war</packaging>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.target>17</maven.compiler.target>
+    <maven.compiler.source>17</maven.compiler.source>
+    <junit.version>5.8.2</junit.version>
+    <version.org.wildfly.full>27.0.0.Alpha1</version.org.wildfly.full>
+    <maven-failsafe-plugin.version>3.0.0-M5</maven-failsafe-plugin.version>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>jakarta.validation</groupId>
+      <artifactId>jakarta.validation-api</artifactId>
+      <version>3.0.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.enterprise</groupId>
+      <artifactId>jakarta.enterprise.cdi-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.faces</groupId>
+      <artifactId>jakarta.faces-api</artifactId>
+      <version>4.0.1</version>
+    </dependency>
+    <dependency>
+      <groupId>jakarta.servlet</groupId>
+      <artifactId>jakarta.servlet-api</artifactId>
+      <version>5.0.0</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-engine</artifactId>
+      <version>${junit.version}</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>demo</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.2</version>
+      </plugin>
+
+<!--      <plugin>-->
+<!--        <groupId>org.wildfly.plugins</groupId>-->
+<!--        <artifactId>wildfly-jar-maven-plugin</artifactId>-->
+<!--        <version>7.0.0.Final</version>-->
+<!--        <configuration>-->
+<!--          <feature-pack-location>-->
+<!--            wildfly@maven(org.jboss.universe:community-universe)#${version.org.wildfly.full}-->
+<!--          </feature-pack-location>-->
+<!--          <layers>-->
+<!--&lt;!&ndash;            <layer>jaxrs-server</layer>&ndash;&gt;-->
+<!--&lt;!&ndash;            <layer>microprofile-openapi</layer>&ndash;&gt;-->
+<!--            <layer>jsf</layer>-->
+<!--          </layers>-->
+<!--          <plugin-options>-->
+<!--            <jboss-fork-embedded>true</jboss-fork-embedded>-->
+<!--          </plugin-options>-->
+<!--        </configuration>-->
+<!--        <executions>-->
+<!--          <execution>-->
+<!--            <goals>-->
+<!--              <goal>package</goal>-->
+<!--            </goals>-->
+<!--          </execution>-->
+<!--        </executions>-->
+<!--      </plugin>-->
+
+<!--      <plugin>-->
+<!--        <artifactId>maven-failsafe-plugin</artifactId>-->
+<!--        <version>${maven-failsafe-plugin.version}</version>-->
+<!--        <configuration>-->
+<!--          <systemPropertyVariables>-->
+<!--            <bootable.jar>${project.build.directory}/${project.artifactId}-bootable.jar-->
+<!--            </bootable.jar>-->
+<!--            <arquillian.launch>wildfly-bootable-jar</arquillian.launch>-->
+<!--            <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>-->
+<!--          </systemPropertyVariables>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
+    </plugins>
+
+  </build>
+</project>
